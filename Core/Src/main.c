@@ -90,7 +90,6 @@ int main(void)
   MX_GPIO_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
-zxz
   /**/
 
   //TODO 1 . Start UART Reception
