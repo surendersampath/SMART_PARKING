@@ -21,7 +21,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "ESP8266_HAL.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -51,7 +51,7 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_USART1_UART_Init(void);
 /* USER CODE BEGIN PFP */
-
+char response[10];
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -92,9 +92,10 @@ int main(void)
   /* USER CODE BEGIN 2 */
   /**/
 
-  //TODO 1 . Start UART Reception
-  //TODO 2 . Call wifi connect
-  //TODO 3 . Connect to TCP server
+  // 1. Connect to WiFi
+  ESP_Init("YourSSID", "YourPassword");
+
+  ESP_TCP_Connect("192.168.1.100", 5000);
 
 
   /* USER CODE END 2 */
@@ -104,6 +105,19 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
+	  ESP_TCP_Send("Hello from STM32\r\n");
+	  // Try to receive a response character
+	  char response_character;
+	  response_character = ESP_TCP_Receive();
+
+	  // If a valid character is received (non-zero), print it
+	   if (response_character != 0)
+	   {
+	          char msg[30];
+	          sprintf(msg, "Received: %c\r\n", response_character);
+	   }
+
+      HAL_Delay(3000);  // Delay between cycles
 
     /* USER CODE BEGIN 3 */
   }

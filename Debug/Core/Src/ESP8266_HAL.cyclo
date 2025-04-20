@@ -1,0 +1,6 @@
+../Core/Src/ESP8266_HAL.c:23:5:check_response	5
+../Core/Src/ESP8266_HAL.c:51:6:Uart_flush	2
+../Core/Src/ESP8266_HAL.c:64:6:ESP_Init	5
+../Core/Src/ESP8266_HAL.c:96:5:ESP_TCP_Connect	2
+../Core/Src/ESP8266_HAL.c:112:5:ESP_TCP_Send	3
+../Core/Src/ESP8266_HAL.c:131:6:ESP_TCP_Receive	9
